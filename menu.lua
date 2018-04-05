@@ -9,11 +9,11 @@ local scene = composer.newScene()
 -- -----------------------------------------------------------------------------------
 
 local function goToGame()
-		composer.gotoScene( "game" )
+		composer.gotoScene( "game", { time=800, effect="crossFade" } )
 end
 
 local function goToHighScores()
-		composer.goToScene( "highscores" )
+		composer.gotoScene( "highscores", { time=800, effect="crossFade" } )
 end
 
 
@@ -27,16 +27,16 @@ function scene:create( event )
 	local sceneGroup = self.view
 	-- Code here runs when the scene is first created but has not yet appeared on screen
 
-	local background = display.newImageRect( sceneGroup, "background.png", 2000, 2400 )
-	background.x = displaycontentCenterX
-	background.y = displaycontentCenterY
+	local background = display.newImageRect( sceneGroup, "homer.png", 1000, 1000 )
+	background.x = 340
+	background.y = 400
 
-	local title = display.newImageRect( sceneGroup, "HL3.png", 690, 420 )
+	local title = display.newImageRect( sceneGroup, "dabwuigi.png", 690, 420 )
 	title.x = 375
 	title.y = 500
 
-	local playButton = display.newText( sceneGroup, "SPOOKY SKELETON SAYS PLAY", display.contentCenterX, 700, native.systemFont, 30 )
-	playButton:setFillColor( 0.82, 0.86, 1)
+	local playButton = display.newText( sceneGroup, "GABE FROM VALVE SAYS PLAY", display.contentCenterX, 700, native.systemFont, 30 )
+	playButton:setFillColor( 1.82, 1.99, 1)
 
 	local highScoresButton = display.newText( sceneGroup, "THE BEST OF THE BEST", display.contentCenterX, 810, native.systemFont, 44 )
 	highScoresButton:setFillColor( 0.78, 0.79, 1 )

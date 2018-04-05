@@ -68,10 +68,10 @@ local mainGroup = display.newGroup()
 local uiGroup = display.newGroup()
 
 
-local background = display.newImageRect( backGroup, "background.png", 800, 1400 )
-background.x = display.contentCenterX
-background.y = display.contentCenterY
-ship = display.newImageRect(mainGroup, objectSheet, 4, 98, 79 )
+local background = display.newImageRect( backGroup, "space.jpg", 1000, 1000 )
+background.x = 340
+background.y = 400
+ship = display.newImageRect(mainGroup, "yes.png", 4, 98, 79 )
 ship.x = display.contentCenterX
 ship.y = display.contentHeight - 100
 physics.addBody( ship, { radius=30, isSensor=true} )
@@ -79,8 +79,8 @@ ship.myName = "ship"
 
 
 
-livesText = display.newText( uiGroup, "Lives: " .. lives, 200, 80, native.systemFont, 36 )
-scoreText = display.newText( uiGroup, "Score: " .. lives, 400, 80, native.systemFont, 36 )
+livesText = display.newText( uiGroup, "LIFE YOU GOT LEFT: " .. lives, 200, 80, native.systemFont, 36 )
+scoreText = display.newText( uiGroup, "YOU WINNING BY: " .. lives, 400, 80, native.systemFont, 36 )
 
 
 display.setStatusBar( display.HiddenStatusBar )
@@ -94,7 +94,7 @@ end
 
 local function createAsteroid()
 
-    local newAsteroid = display.newImageRect( mainGroup, objectSheet, 1, 102, 85 )
+    local newAsteroid = display.newImageRect( mainGroup, "yes.png", 1, 102, 85 )
     table.insert ( asteroidsTable, newAsteroid )
     physics.addBody( newAsteroid, "dynamic", { radius=40, bounce=0.8 } )
     newAsteroid.myName = "asteroid"
