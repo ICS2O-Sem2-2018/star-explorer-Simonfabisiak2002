@@ -53,7 +53,7 @@ local objectSheet = graphics.newImageSheet( "gameObjects.png", sheetOptions )
 
 
 local lives = 3
-local score = 2900
+local score = 0
 local died = false
 
 local asteroidsTable = {}
@@ -79,9 +79,9 @@ end
 
 local function createAsteroid()
 
-    local newAsteroid = display.newImageRect( mainGroup, "Peter-Griffin-psd72724.png", 100, 102 )
+    local newAsteroid = display.newImageRect( mainGroup, "nut.png", 100, 102 )
     table.insert( asteroidsTable, newAsteroid )
-    physics.addBody( newAsteroid, "dynamic", { radius=40, bounce=0.8 } )
+    physics.addBody( newAsteroid, "dynamic", { radius=50, bounce=2 } )
     newAsteroid.myName = "asteroid"
 
     local whereFrom = math.random( 3 )
@@ -191,9 +191,7 @@ local function endGame()
   composer.gotoScene( "highscores", { time=800, effect="crossFade" } )
 end
 
-local function moveOn()
-  composer.gotoScene( "game2", { time=800, effect="crossFade" } )
-end
+
 local function onCollision( event )
 
     if ( event.phase == "began" ) then
@@ -220,14 +218,12 @@ local function onCollision( event )
 
             -- Increase score
             score = score + 100
-            if ( score>= 3000  ) then
-              timer.performWithDelay( 500, moveOn() )
-            end
             scoreText.text = "Score: " .. score
 
         elseif ( ( obj1.myName == "ship" and obj2.myName == "asteroid" ) or
                  ( obj1.myName == "asteroid" and obj2.myName == "ship" ) )
         then
+          print("SHIP IS "..died)
             if ( died == false ) then
                 died = true
 
@@ -331,9 +327,9 @@ timer.cancel( gameLoopTimer )
 
 	elseif ( phase == "did" ) then
 		  -- Code here runs immediately after the scene goes entirely off screen
-      print("ALL STOP")
       Runtime:removeEventListener( "collision", onCollision )
       physics.pause()
+      composer.removeScene( "game" )
 
 
       audio.stop( 1 )

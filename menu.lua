@@ -27,11 +27,11 @@ function scene:create( event )
 	local sceneGroup = self.view
 	-- Code here runs when the scene is first created but has not yet appeared on screen
 
-	local background = display.newImageRect( sceneGroup, "homer.png", 1000, 1000 )
+	local background = display.newImageRect( sceneGroup, "HL3.png", 1000, 1000 )
 	background.x = 340
 	background.y = 400
 
-	local title = display.newImageRect( sceneGroup, "dabwuigi.png", 690, 420 )
+	local title = display.newImageRect( sceneGroup, "wombo.jpg", 690, 420 )
 	title.x = 375
 	title.y = 500
 
@@ -41,6 +41,7 @@ function scene:create( event )
 	local highScoresButton = display.newText( sceneGroup, "THE BEST OF THE BEST", display.contentCenterX, 810, native.systemFont, 44 )
 	highScoresButton:setFillColor( 0.78, 0.79, 1 )
 
+	local levelsButton = 
 	playButton:addEventListener( "tap", goToGame )
 	highScoresButton:addEventListener( "tap", goToHighScores)
 end
